@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require "minitest/pride"
-require '../lib/csv_parser'
+require_relative '../lib/csv_parser'
 
 class ParserTest < Minitest::Test
   def test_it_parses_data
