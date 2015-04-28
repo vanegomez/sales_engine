@@ -10,8 +10,8 @@ class SalesEngine
   end
 
   def startup
-   customer_data = Parser.parse("#{@filepath}/customers.csv")
-   @customer_repository     = CustomerRepository.new(customer_data, self)
+   customer_data         = Parser.parse("#{@filepath}/customers.csv")
+   @customer_repository  = CustomerRepository.new(customer_data, self)
   end
 
   if __FILE__ == $0
