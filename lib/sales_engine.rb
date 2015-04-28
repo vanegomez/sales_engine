@@ -20,5 +20,4 @@ class SalesEngine
   test = engine.customer_repository
   puts test.find_by_first_name("Cecelia").id
   end
->>>>>>> lev_sales_engine
 end
