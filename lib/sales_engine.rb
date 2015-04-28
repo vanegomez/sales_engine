@@ -1,19 +1,24 @@
 require "csv"
-require_relative "merchant"
-require_relative "merchant_repository"
+require_relative "customer.rb"
+require_relative "customer_repository.rb"
 
 class SalesEngine
-  # your code goes here
-end
+  attr_reader :customer_repository
 
-if __FILE__ == $0
-  engine = SalesEngine.new
+  def initialize(filepath)
+   @filepath = filepath
+  end
+
+  def startup
+   customer_data = Parser.parse("#{@filepath}/customers.csv")
+   @customer_repository     = CustomerRepository.new(customer_data, self)
+  end
+
+  if __FILE__ == $0
+  engine = SalesEngine.new("../data")
   engine.startup
-
-  engine.merchant_repository
-  engine.invoice_repository
-  engine.item_repository
-  engine.invoice_item_repository
-  engine.customer_repository
-  engine.transaction_repository
+  test = engine.customer_repository
+  puts test.find_by_first_name("Cecelia").id
+  end
+>>>>>>> lev_sales_engine
 end
