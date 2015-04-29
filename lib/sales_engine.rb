@@ -4,10 +4,13 @@ require_relative "customer.rb"
 require_relative "customer_repository.rb"
 require_relative "invoice_repository.rb"
 require_relative "invoice.rb"
+require_relative "transaction.rb"
+require_relative "transaction_repository.rb"
 
 class SalesEngine
   attr_reader :customer_repository,
-              :invoice_repository
+              :invoice_repository,
+              :transaction_repository
 
   def initialize(filepath)
    @filepath = filepath
@@ -18,6 +21,8 @@ class SalesEngine
    @customer_repository     = CustomerRepository.new(customer_data, self)
    invoice_data             = Parser.parse("#{@filepath}/invoices.csv")
    @invoice_repository      = InvoiceRepository.new(invoice_data, self)
+   transaction_data         = Parser.parse("#{@filepath}/transactions.csv")
+   @transaction_repository  = TransactionRepository.new(transaction_data, self)
   end
 
   def find_invoices_by_customer_id(id)
@@ -27,7 +32,5 @@ class SalesEngine
   if __FILE__ == $0
     engine = SalesEngine.new("../data")
     engine.startup
-    test = engine.customer_repository
-    puts test.random
   end
 end
