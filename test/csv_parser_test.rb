@@ -4,8 +4,8 @@ require_relative '../lib/csv_parser'
 
 class ParserTest < Minitest::Test
   def test_it_parses_data
-    filepath = "../data/merchants.csv"
+    filepath = "./test/fixtures/merchants.csv"
     data = Parser.parse(filepath)
-    assert_equal data.path, "../data/merchants.csv"
+    assert_equal data.path, "./test/fixtures/merchants.csv"
   end
 end
