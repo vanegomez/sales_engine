@@ -24,11 +24,11 @@ class MerchantTest < Minitest::Test
     assert_equal "Schroeder-Jerde", @merchant.name
   end
 
-  def test_costumer_was_created_at
+  def test_merchant_was_created_at
     assert_equal "2012-03-27 14:53:59 UTC", @merchant.created_at
   end
 
-  def test_costumer_was_updated_at
+  def test_merchant_was_updated_at
     assert_equal "2012-03-27 14:53:59 UTC", @merchant.updated_at
   end
 end

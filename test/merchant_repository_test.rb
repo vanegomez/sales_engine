@@ -1,8 +1,8 @@
 require "minitest/autorun"
 require "minitest/pride"
-require_relative "../lib/sales_engine.rb"
+require_relative "../lib/sales_engine"
 
-class MerchantRepositoryTest < Minitest::Spec
+class MerchantRepositoryTest < Minitest::Test
   attr_reader :merchant_repository,
               :data
 
@@ -14,6 +14,7 @@ class MerchantRepositoryTest < Minitest::Spec
 
   def test_it_finds_all_merchants
     assert_equal Array, merchant_repository.all.class
+    assert_equal 10, merchant_repository.all.length.to_i
   end
 
   def test_it_returns_random_merchant
@@ -29,7 +30,7 @@ class MerchantRepositoryTest < Minitest::Spec
   end
 
   def test_it_finds_all_by_id
-    assert_equal "Willms and Sons", merchant_repository.find_by_id(3).name
+    assert_equal 1, merchant_repository.find_all_by_id(3).count
   end
 
   def test_finds_by_name

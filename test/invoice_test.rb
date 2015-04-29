@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require "minitest/pride"
-require_relative "../lib/invoice.rb"
+require_relative "../lib/invoice"
 
 class InvoiceTest < Minitest::Test
   attr_accessor :data
