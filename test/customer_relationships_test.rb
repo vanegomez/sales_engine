@@ -8,7 +8,7 @@ class CustomerRelationshipstest < Minitest::Test
               :invoice_repository
 
   def setup
-    @engine = SalesEngine.new("fixtures")
+    @engine = SalesEngine.new("./test/fixtures")
     @engine.startup
     @customer = @engine.customer_repository.all.first
   end
