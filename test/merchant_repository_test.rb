@@ -41,8 +41,7 @@ class MerchantRepositoryTest < Minitest::Spec
   end
 
   def test_it_finds_by_created_at
-    skip
-    assert_equal 2, merchant_repository.find_by_created_at("Osinski")
+    assert_equal "Schroeder-Jerde", merchant_repository.find_by_created_at("2012-03-27 14:53:59 UTC").name
   end
 
   # def test_it_finds_all_by_created_at
