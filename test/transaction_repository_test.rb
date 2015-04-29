@@ -9,7 +9,7 @@ class TransactionRepositoryTest < Minitest::Test
               :engine
 
   def setup
-    @engine = SalesEngine.new("fixtures")
+    @engine = SalesEngine.new("./test/fixtures")
     @engine.startup
     @transaction_repository = engine.transaction_repository
   end

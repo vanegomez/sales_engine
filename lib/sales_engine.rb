@@ -8,12 +8,18 @@ require_relative "transaction"
 require_relative "transaction_repository"
 require_relative "merchant"
 require_relative "merchant_repository"
+require_relative "item"
+require_relative "item_repository"
+require_relative "invoice_item"
+require_relative "invoice_item_repository"
 
 class SalesEngine
   attr_reader :customer_repository,
               :invoice_repository,
               :transaction_repository,
-              :merchant_repository
+              :merchant_repository,
+              :item_repository,
+              :invoice_item_repository
 
   def initialize(filepath)
    @filepath = filepath
@@ -28,6 +34,10 @@ class SalesEngine
     @transaction_repository   = TransactionRepository.new(transaction_data, self)
     merchant_data             = Parser.parse("#{@filepath}/merchants.csv")
     @merchant_repository      = MerchantRepository.new(merchant_data, self)
+    item_data                 = Parser.parse("#{@filepath}/items.csv")
+    @item_repository          = ItemRepository.new(item_data, self)
+    invoice_item_data         = Parser.parse("#{@filepath}/invoice_items.csv")
+    @invoice_item_repository  = InvoiceItemRepository.new(invoice_item_data, self)
   end
 
   def find_invoices_by_customer_id(id)
