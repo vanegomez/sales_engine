@@ -15,12 +15,21 @@ class CustomerRepositoryTest < Minitest::Spec
     assert @customer_repository
   end
 
+  def test_it_returns_all
+    assert_equal 1000, customer_repository.all.length.to_i
+    assert_equal Array, customer_repository.all.class
+  end
+
   def test_it_returns_random_customer
     refute_equal customer_repository.random, customer_repository.random
   end
 
   def test_it_finds_by_id
     assert_equal "Cecelia", customer_repository.find_by_id(2).first_name
+  end
+
+  def test_it_finds_all_by_id
+    assert_equal "Cecelia", customer_repository.find_all_by_id(2)[0].first_name
   end
 
   def test_finds_by_first_name
