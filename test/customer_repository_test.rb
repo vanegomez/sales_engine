@@ -6,7 +6,7 @@ class CustomerRepositoryTest < Minitest::Spec
   attr_reader :customer_repository
 
   def setup
-    @engine = SalesEngine.new("../data")
+    @engine = SalesEngine.new("./test/fixtures")
     @engine.startup
     @customer_repository = @engine.customer_repository
   end
