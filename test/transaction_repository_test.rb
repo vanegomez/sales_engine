@@ -30,80 +30,56 @@ class TransactionRepositoryTest < Minitest::Test
   end
 
   def test_it_finds_transaction_by_id
-    result = transaction_repository.find_by_id(2)
-
-    assert_equal 2, result.invoice_id
+    assert_equal 2, transaction_repository.find_by_id(2).invoice_id
   end
 
   def test_it_finds_all_transactions_by_id
-    result = transaction_repository.find_all_by_id(2)
-
-    assert_equal Array, result.class
-    assert_equal 1, result.size
+    assert_equal Array, transaction_repository.find_all_by_id(2).class
+    assert_equal 1, transaction_repository.find_all_by_id(2).size
   end
 
   def test_it_finds_transaction_by_invoice_id
-    result = transaction_repository.find_by_invoice_id(4)
-
-    assert_equal "4354495077693036", result.credit_card_number
+    assert_equal "4354495077693036", transaction_repository.find_by_invoice_id(4).credit_card_number
   end
 
   def test_it_finds_all_transactions_by_invoice_id
-    result = transaction_repository.find_all_by_invoice_id(2)
-
-    assert_equal Array, result.class
-    assert_equal 1, result.length
+    assert_equal Array, transaction_repository.find_all_by_invoice_id(2).class
+    assert_equal 1, transaction_repository.find_all_by_invoice_id(2).length
   end
 
   def test_it_finds_transaction_by_credit_card_number
-    result = transaction_repository.find_by_credit_card_number("4654405418249632")
-
-    assert_equal "2012-03-27 14:54:09 UTC", result.created_at
+    assert_equal "2012-03-27 14:54:09 UTC", transaction_repository.find_by_credit_card_number("4654405418249632").created_at
   end
 
   def test_it_finds_all_transactions_by_credit_card_number
-    result = transaction_repository.find_all_by_credit_card_number("4580251236515201")
-
-    assert_equal Array, result.class
-    assert_equal 1, result.length
+    assert_equal Array, transaction_repository.find_all_by_credit_card_number("4580251236515201").class
+    assert_equal 1, transaction_repository.find_all_by_credit_card_number("4580251236515201").length
   end
 
   def test_it_finds_transaction_by_credit_card_expiration_date
-    result = transaction_repository.find_by_credit_card_expiration_date(nil)
-
-    assert_equal 1, result.invoice_id
+    assert_equal 1, transaction_repository.find_by_credit_card_expiration_date(nil).invoice_id
   end
 
   def test_it_finds_all_transactions_by_credit_card_expiration_date
-    result = transaction_repository.find_all_by_credit_card_expiration_date(nil)
-
-    assert_equal Array, result.class
-    assert_equal 10, result.length
+    assert_equal Array, transaction_repository.find_all_by_credit_card_expiration_date(nil).class
+    assert_equal 10, transaction_repository.find_all_by_credit_card_expiration_date(nil).length
   end
 
   def test_it_finds_transaction_by_result
-    result = transaction_repository.find_by_result("failed")
-
-    assert_equal nil, result
+    assert_equal nil, transaction_repository.find_by_result("failed")
   end
 
   def test_it_finds_all_transactions_by_result
-    result = transaction_repository.find_all_by_result("success")
-
-    assert_equal Array, result.class
-    assert_equal 10, result.length
+    assert_equal Array, transaction_repository.find_all_by_result("success").class
+    assert_equal 10, transaction_repository.find_all_by_result("success").length
   end
 
   def test_it_finds_transaction_by_date_updated
-    result = transaction_repository.find_by_updated_at("2012-03-27 14:54:09 UTC")
-
-    assert_equal "2012-03-27 14:54:09 UTC", result.created_at
+    assert_equal "2012-03-27 14:54:09 UTC", transaction_repository.find_by_updated_at("2012-03-27 14:54:09 UTC").created_at
   end
 
   def test_it_finds_all_transactions_by_date_updated
-    result = transaction_repository.find_all_by_updated_at("2012-03-27 14:54:09 UTC")
-
-    assert_equal Array, result.class
-    assert_equal 2, result.length
+    assert_equal Array, transaction_repository.find_all_by_updated_at("2012-03-27 14:54:09 UTC").class
+    assert_equal 2, transaction_repository.find_all_by_updated_at("2012-03-27 14:54:09 UTC").length
   end
 end
