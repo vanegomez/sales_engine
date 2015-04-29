@@ -37,23 +37,22 @@ class MerchantRepositoryTest < Minitest::Spec
   end
 
   def test_it_finds_all_by_name
-    assert_equal [5, 6], merchant_repository.find_all_by_name("Williamson Group").map { |element| element.id }
+    assert_equal 2, merchant_repository.find_all_by_name("Williamson Group").length
   end
 
   def test_it_finds_by_created_at
-    skip
-    assert_equal 2, merchant_repository.find_by_created_at("Osinski")
+    assert_equal 1, merchant_repository.find_by_created_at("2012-03-27 14:53:59 UTC").id
   end
 
-  # def test_it_finds_all_by_created_at
-  #   assert_equal "Cecelia", merchant_repository.find_all_by_last_name("Osinski")[0].first_name
-  # end
-  #
-  # def test_it_finds_by_updated_at
-  #   assert_equal 2, merchant_repository.find_by_last_name("Osinski").id
-  # end
-  #
-  # def test_it_finds_all_by_updated_at
-  #   assert_equal "Cecelia", merchant_repository.find_all_by_last_name("Osinski")[0].first_name
-  # end
+  def test_it_finds_all_by_created_at
+    assert_equal 9, merchant_repository.find_all_by_created_at("2012-03-27 14:53:59 UTC").length
+  end
+
+  def test_it_finds_by_updated_at
+    assert_equal 6, merchant_repository.find_by_updated_at("2012-03-27 16:12:25 UTC").id
+  end
+
+  def test_it_finds_all_by_updated_at
+    assert_equal 8, merchant_repository.find_all_by_updated_at("2012-03-27 14:53:59 UTC").length
+  end
 end
