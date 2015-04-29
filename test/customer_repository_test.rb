@@ -16,7 +16,7 @@ class CustomerRepositoryTest < Minitest::Spec
   end
 
   def test_it_returns_all
-    assert_equal 1000, customer_repository.all.length.to_i
+    assert_equal 10, customer_repository.all.length.to_i
     assert_equal Array, customer_repository.all.class
   end
 
