@@ -1,5 +1,4 @@
-require_relative 'csv_parser.rb'
-require_relative 'customer.rb'
+require_relative "customer.rb"
 
 class CustomerRepository
   attr_reader :customers,
@@ -32,6 +31,18 @@ class CustomerRepository
 
   def find_all_by_first_name(first_name)
     @customers.find_all {|customer| customer.first_name == first_name}
+  end
+
+  def find_by_last_name(last_name)
+    @customers.find {|customer| customer.last_name == last_name}
+  end
+
+  def find_all_by_last_name(last_name)
+    @customers.find_all {|customer| customer.last_name == last_name}
+  end
+
+  def find_invoices(id)
+    @engine.find_invoices_by_customer_id(id)
   end
 
   def inspect

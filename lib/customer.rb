@@ -1,3 +1,5 @@
+require_relative "customer_repository.rb"
+
 class Customer
   attr_reader :id,
               :first_name,
@@ -13,5 +15,9 @@ class Customer
     @created_at  = data[:created_at]
     @updated_at  = data[:updated_at]
     @repository  = repository
+  end
+
+  def invoices
+    @invoices ||= @repository.find_invoices(id)
   end
 end
