@@ -39,4 +39,19 @@ class CustomerRepositoryTest < Minitest::Spec
     assert_equal "Cecelia", customer_repository.find_all_by_last_name("Osinski")[0].first_name
   end
 
+  def test_find_by_created_at
+   assert_equal 1, customer_repository.find_by_created_at("2012-03-27 14:54:09 UTC").id
+  end
+
+  def test_find_all_by_created_at
+   assert_equal 6, customer_repository.find_all_by_created_at("2012-03-27 14:54:10 UTC").length
+  end
+
+  def test_find_by_updated_at
+   assert_equal 1, customer_repository.find_by_updated_at("2012-03-27 14:54:09 UTC").id
+  end
+
+  def test_find_all_by_updated_at
+   assert_equal 6, customer_repository.find_all_by_updated_at("2012-03-27 14:54:10 UTC").length
+  end
 end
