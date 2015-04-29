@@ -10,7 +10,7 @@ class InvoiceRepositoryTest < Minitest::Test
               :engine
 
   def setup
-    @engine = SalesEngine.new("fixtures")
+    @engine = SalesEngine.new("./test/fixtures")
     engine.startup
     @invoice_repository = engine.invoice_repository
   end
