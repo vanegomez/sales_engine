@@ -2,7 +2,7 @@ require "minitest/autorun"
 require "minitest/pride"
 require_relative "../lib/sales_engine.rb"
 
-class CustomerRepositoryTest < Minitest::Spec
+class CustomerRepositoryTest < Minitest::Test
   attr_reader :customer_repository
 
   def setup

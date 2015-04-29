@@ -1,10 +1,12 @@
+require_relative "invoice_item"
+
 class InvoiceItemRepository
   attr_reader :invoice_items,
               :data
 
-  def initialize
-    @invoice_items = data.map { |row| Item.new(row, self) }
+  def initialize(data, engine)
     @engine = engine
+    @invoice_items = data.map { |row| Item.new(row, self) }
   end
 
   def all
@@ -75,5 +77,3 @@ class InvoiceItemRepository
     "#<#{self.class} #{@invoice_items.size} rows>"
   end
 end
-
-# id,item_id,invoice_id,quantity,unit_price,created_at,updated_at
