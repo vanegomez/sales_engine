@@ -4,7 +4,7 @@ class ItemRepository
   attr_reader :items,
               :data
 
-  def initialize
+  def initialize(data, engine)
     @items = data.map { |row| Item.new(row, self) }
     @engine = engine
   end
@@ -77,4 +77,3 @@ class ItemRepository
     "#<#{self.class} #{@items.size} rows>"
   end
 end
-
