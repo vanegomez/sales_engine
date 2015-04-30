@@ -45,7 +45,11 @@ class SalesEngine
   end
 
   def find_invoice_by_invoice_id(id)
-    @invoice_repository.find_invoice_by_invoice_id(id)
+    @invoice_repository.find_by_invoice_id(id)
+  end
+
+  def find_transactions_by_invoice(id)
+    @transaction_repository.find_by_invoice_id(id)
   end
 
   if __FILE__ == $0

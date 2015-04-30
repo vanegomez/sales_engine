@@ -80,6 +80,10 @@ class TransactionRepository
     @engine.find_invoice_by_invoice_id(id)
   end
 
+  def find_by_invoice_id(id)
+    @transactions.find { |transaction| transaction.invoice_id == id}
+  end
+
   def inspect
     "#<#{self.class} #{@transactions.size} rows>"
   end

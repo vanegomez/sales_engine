@@ -65,8 +65,12 @@ class InvoiceRepository
     @invoices.find_all { |invoice| invoice.updated_at == updated_at }
   end
 
-  def find_invoice_by_invoice_id(id)
+  def find_by_invoice_id(id)
     @invoices.find { |invoice| invoice.id == id }
+  end
+
+  def find_transaction_by_invoice(id)
+   @engine.find_transactions_by_invoice(id)
   end
 
   def inspect
