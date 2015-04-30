@@ -44,6 +44,10 @@ class SalesEngine
     @invoice_repository.find_all_by_customer_id(id)
   end
 
+  def find_invoice_by_invoice_id(id)
+    @invoice_repository.find_invoice_by_invoice_id(id)
+  end
+
   if __FILE__ == $0
     engine = SalesEngine.new("../data")
     engine.startup
