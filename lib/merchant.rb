@@ -1,3 +1,4 @@
+require_relative "merchant_repository"
 class Merchant
   attr_reader :id,
               :name,
@@ -11,5 +12,13 @@ class Merchant
     @created_at  = data[:created_at]
     @updated_at  = data[:updated_at]
     @repository  = repository
+  end
+
+  def items
+    @items ||= @repository.find_items_by_merchant_id(id)
+  end
+
+  def invoices
+    @invoices ||= @repository.find_invoices_by_merchant_id(id)
   end
 end
