@@ -4,8 +4,6 @@ require_relative "../lib/customer"
 require_relative "../lib/sales_engine"
 
 class CustomerRelationshipstest < Minitest::Test
-  attr_reader :customer_repo,
-              :invoice_repository
 
   def setup
     @engine = SalesEngine.new("./test/fixtures")

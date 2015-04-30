@@ -17,4 +17,7 @@ class Invoice
     @repository  = repository
   end
 
+  def transactions
+    @transactions ||= @repository.find_transaction_by_invoice(id)
+  end
 end
