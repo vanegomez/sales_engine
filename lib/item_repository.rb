@@ -73,6 +73,10 @@ class ItemRepository
     @items.find_all {|item| item.updated_at == updated_at}
   end
 
+  def find_items(id)
+    @items.find_all { |item| item.id == id}
+  end
+
   def inspect
     "#<#{self.class} #{@items.size} rows>"
   end

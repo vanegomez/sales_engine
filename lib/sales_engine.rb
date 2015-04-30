@@ -58,6 +58,17 @@ class SalesEngine
 
   def find_items_by_merchant_id(id)
     @item_repository.find_all_by_merchant_id(id)
+
+  def find_items(id)
+    @item_repository.find_items(id)
+  end
+
+  def find_customers(id)
+    @customer_repository.find_customers(id)
+  end
+
+  def find_merchants(id)
+    @merchant_repository.find_all_by_id(id)
   end
 
   if __FILE__ == $0
