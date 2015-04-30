@@ -21,7 +21,11 @@ class CustomerRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_random_customer
-    refute_equal customer_repository.random, customer_repository.random
+    sample_one = []
+    sample_two = []
+    10.times { sample_one << customer_repository.random }
+    10.times { sample_two << customer_repository.random }
+    refute_equal sample_one, sample_two
   end
 
   def test_it_finds_by_id
