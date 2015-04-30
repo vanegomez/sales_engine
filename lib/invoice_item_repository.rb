@@ -27,7 +27,6 @@ class InvoiceItemRepository
 
   def find_by_item_id(item_id)
     @invoice_items.find { |invoice_item| invoice_item.item_id == item_id }
-    require 'pry'; binding.pry
   end
 
   # 3) SalesEngine invoice items Searching .find_by_item_id can find a record

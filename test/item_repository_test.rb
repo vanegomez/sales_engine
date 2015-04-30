@@ -72,12 +72,12 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_find_by_unit_price
-    assert_equal 6, item_repository.find_by_unit_price("15925").id
+    assert_equal 6, item_repository.find_by_unit_price(BigDecimal.new("15925")/100).id
   end
 
   def test_find_all_by_unit_price
     assert_equal Array, item_repository.find_all_by_unit_price(343.55).class
-    assert_equal 0, item_repository.find_all_by_unit_price(343.55).length
+    assert_equal 1, item_repository.find_all_by_unit_price(BigDecimal.new("34355")/100).length
   end
 
   def test_find_by_merchant_id
