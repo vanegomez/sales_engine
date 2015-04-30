@@ -24,4 +24,16 @@ class Invoice
   def invoice_items
     @invoice_items ||= @repository.find_invoice_item_by_invoice(id)
   end
+
+  def items
+    @items ||= @repository.find_items(id)
+  end
+
+  def customers
+    @customers ||= @repository.find_customers(id)
+  end
+
+  def merchants
+    @merchants ||= @repository.find_merchants(id)
+  end
 end

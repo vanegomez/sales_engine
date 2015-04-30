@@ -77,6 +77,18 @@ class InvoiceRepository
     @engine.find_invoice_item_by_invoice(id)
   end
 
+  def find_items(id)
+    @engine.find_items(id)
+  end
+
+  def find_customers(id)
+    @engine.find_customers(id)
+  end
+
+  def find_merchants(id)
+    @engine.find_merchants(id)
+  end
+
   def inspect
     "#<#{self.class} #{@invoices.size} rows>"
   end

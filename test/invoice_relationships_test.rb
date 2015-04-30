@@ -16,7 +16,19 @@ class InvoiceRelationshipstest < Minitest::Test
     refute_equal 1, @invoice.transactions.invoice_id
   end
 
-  def test_it_returns_invoice_items
+  def test_it_finds_invoice_items_by_id
     assert_equal [9,10], @invoice.invoice_items.map { |invoice_item| invoice_item.id }
+  end
+
+  def test_it_can_find_items
+    assert_equal @invoice.items[0].name, "Item Autem Minima"
+  end
+
+  def test_it_can_find_customers
+    assert_equal @invoice.customers[0].first_name, "Cecelia"
+  end
+
+  def test_it_can_find_merchants
+    assert_equal @invoice.merchants[0].name, "Klein, Rempel and Jones"
   end
 end
