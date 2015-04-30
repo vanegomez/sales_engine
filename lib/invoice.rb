@@ -20,4 +20,8 @@ class Invoice
   def transactions
     @transactions ||= @repository.find_transaction_by_invoice(id)
   end
+
+  def invoice_items
+    @invoice_items ||= @repository.find_invoice_item_by_invoice(id)
+  end
 end
