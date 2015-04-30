@@ -34,30 +34,12 @@ class InvoiceItemRepositoryTest < Minitest::Test
   end
 
   def test_finds_by_item_id
+    require 'pry'; binding.pry
     assert_equal 1, invoice_item_repository.find_by_item_id("539").
   end
 
   def test_it_finds_all_by_item_id
-    skip
     assert_equal 2, invoice_item_repository.find_all_by_item_id("Williamson Group").length
   end
-  #
-  # def test_it_finds_by_created_at
-  #   assert_equal 1, invoice_item_repository.find_by_created_at("2012-03-27 14:53:59 UTC").id
-  # end
-  #
-  # def test_it_finds_all_by_created_at
-  #   assert_equal 9, invoice_item_repository.find_all_by_created_at("2012-03-27 14:53:59 UTC").length
-  # end
-  #
-  # def test_it_finds_by_updated_at
-  #   assert_equal 6, invoice_item_repository.find_by_updated_at("2012-03-27 16:12:25 UTC").id
-  # end
-  #
-  # def test_it_finds_all_by_updated_at
-  #   assert_equal 8, invoice_item_repository.find_all_by_updated_at("2012-03-27 14:53:59 UTC").length
-  # end
 end
-
-# id,item_id,invoice_id,quantity,unit_price,created_at,updated_at
-# 1,539,1,5,13635,2012-03-27 14:54:09 UTC,2012-03-27 14:54:09 UTC
+end
