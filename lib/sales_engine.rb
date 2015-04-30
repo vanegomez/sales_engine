@@ -56,6 +56,10 @@ class SalesEngine
     @invoice_item_repository.find_all_by_invoice_id(id)
   end
 
+  def find_items_by_merchant_id(id)
+    @item_repository.find_all_by_merchant_id(id)
+  end
+
   if __FILE__ == $0
     engine = SalesEngine.new("../data")
     engine.startup
