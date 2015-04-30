@@ -15,4 +15,8 @@ class InvoiceRelationshipstest < Minitest::Test
     assert_equal 2, @invoice.transactions.invoice_id
     refute_equal 1, @invoice.transactions.invoice_id
   end
+
+  def test_it_returns_invoice_items
+    assert_equal [9,10], @invoice.invoice_items.map { |invoice_item| invoice_item.id }
+  end
 end

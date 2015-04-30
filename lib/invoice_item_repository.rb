@@ -29,12 +29,6 @@ class InvoiceItemRepository
     @invoice_items.find { |invoice_item| invoice_item.item_id == item_id }
   end
 
-  # 3) SalesEngine invoice items Searching .find_by_item_id can find a record
-  #    Failure/Error: expect(invoice_item.item.name).to eq "Item Doloribus Ducimus"
-  #    NoMethodError:
-  #      undefined method `item' for #<InvoiceItem:0x007fe21b3f55e8>
-  #    # ./spec/invoice_item_spec.rb:22:in `block (4 levels) in <top (required)>
-
   def find_all_by_item_id(item_id)
     @invoice_items.find_all { |invoice_item| invoice_item.item_id == item_id }
   end
