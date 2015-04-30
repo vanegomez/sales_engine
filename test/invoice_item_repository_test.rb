@@ -81,4 +81,3 @@ class InvoiceItemRepositoryTest < Minitest::Test
     assert_equal 10, invoice_item_repository.find_all_by_updated_at("2012-03-27 14:54:09 UTC").length
   end
 end
-
