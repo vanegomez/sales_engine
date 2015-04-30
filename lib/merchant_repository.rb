@@ -54,7 +54,7 @@ class MerchantRepository
   end
 
   def find_invoices_by_merchant_id(id)
-    
+    @engine.find_invoices_by_merchant_id(id)
   end
 
   def inspect

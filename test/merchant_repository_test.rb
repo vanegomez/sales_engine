@@ -14,7 +14,7 @@ class MerchantRepositoryTest < Minitest::Test
 
   def test_it_finds_all_merchants
     assert_equal Array, merchant_repository.all.class
-    assert_equal 10, merchant_repository.all.length.to_i
+    assert_equal 11, merchant_repository.all.length.to_i
   end
 
   def test_it_returns_random_merchant
