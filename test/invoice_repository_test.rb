@@ -64,7 +64,7 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_find_by_customer_id
-    result = invoice_repository.find_by_customer_id("1")
+    result = invoice_repository.find_by_customer_id(1)
     assert_equal 1, result.id
   end
 

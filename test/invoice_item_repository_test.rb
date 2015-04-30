@@ -50,11 +50,11 @@ class InvoiceItemRepositoryTest < Minitest::Test
   end
 
   def test_finds_by_quantity
-    assert_equal 539, invoice_item_repository.find_by_quantity("5").item_id
+    assert_equal 539, invoice_item_repository.find_by_quantity(5).item_id
   end
 
   def test_it_finds_all_by_quantity
-    assert_equal 2, invoice_item_repository.find_all_by_quantity("5").count
+    assert_equal 2, invoice_item_repository.find_all_by_quantity(5).count
   end
 
   def test_finds_by_unit_price
