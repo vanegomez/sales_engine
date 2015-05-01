@@ -76,12 +76,20 @@ class SalesEngine
     @invoice_repository.find_all_by_merchant_id(id)
   end
 
-  def find_invoice_by_invoice_id(invoice_id)
-    @invoice_repository.find_invoice_by_invoice_id(invoice_id)
+  def find_invoice_by_invoice_id(id)
+    @invoice_repository.find_invoice_by_invoice_id(id)
   end
 
-  def find_item_by_item_id(item_id)
-    @item_repository.find_item_by_item_id(item_id)
+  def find_item_by_item_id(id)
+    @item_repository.find_item_by_item_id(id)
+  end
+
+  def find_invoice_items_by_item_id(id)
+    @invoice_item_repository.find_all_by_item_id(id)
+  end
+
+  def def_find_items_by_merchant_id(id)
+    @merchant_repository.find_by_id(id)
   end
 
   if __FILE__ == $0
