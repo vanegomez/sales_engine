@@ -77,6 +77,10 @@ class ItemRepository
     @items.find_all { |item| item.id == id}
   end
 
+  def find_item_by_item_id(item_id)
+    @items.find { |item| item.id == item_id}
+  end
+
   def inspect
     "#<#{self.class} #{@items.size} rows>"
   end

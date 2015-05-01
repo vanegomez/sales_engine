@@ -89,6 +89,10 @@ class InvoiceRepository
     @engine.find_merchants(id)
   end
 
+  def find_invoice_by_invoice_id(invoice_id)
+    @invoices.find { |invoice| invoice.id == invoice_id}
+  end
+
   def inspect
     "#<#{self.class} #{@invoices.size} rows>"
   end

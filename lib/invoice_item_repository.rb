@@ -73,6 +73,14 @@ class InvoiceItemRepository
     @invoice_items.find_all { |invoice_item| invoice_item.updated_at == updated_at }
   end
 
+  def find_invoice_by_invoice_id(invoice_id)
+    @engine.find_invoice_by_invoice_id(invoice_id)
+  end
+
+  def find_item_by_item_id(item_id)
+    @engine.find_item_by_item_id(item_id)
+  end
+
   def inspect
     "#<#{self.class} #{@invoice_items.size} rows>"
   end
