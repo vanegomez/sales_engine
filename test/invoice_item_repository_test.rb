@@ -14,7 +14,7 @@ class InvoiceItemRepositoryTest < Minitest::Test
 
   def test_it_finds_all_invoice_items
     assert_equal Array, invoice_item_repository.all.class
-    assert_equal 10, invoice_item_repository.all.count
+    assert_equal 11, invoice_item_repository.all.count
   end
 
   def test_it_returns_random_invoice_item

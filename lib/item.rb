@@ -18,4 +18,12 @@ class Item
     @updated_at  = data[:updated_at]
     @repository  = repository
   end
+
+  def invoice_items
+   @invoice_items ||= @repository.find_invoice_items_by_item_id(id)
+  end
+
+ def merchant
+   @merchant ||= @repository.find_items_by_merchant_id(id)
+ end
 end

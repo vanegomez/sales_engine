@@ -4,4 +4,4 @@ You are allowed to:
 1. Remove rake task
 2. Add existing rake tasks
 To add existing rake tasks automatically delete this file and reload the project.
---><RakeGroup description="" fullCmd="" taksId="rake"><RakeGroup description="" fullCmd="" taksId="sanitation"><RakeTask description="Check both line length and method length" fullCmd="sanitation:all" taksId="all" /><RakeTask description="Check line lengths &amp; whitespace with Cane" fullCmd="sanitation:lines" taksId="lines" /><RakeTask description="Check method length with Reek" fullCmd="sanitation:methods" taksId="methods" /></RakeGroup></RakeGroup></Settings>
+--><RakeGroup description="" fullCmd="" taksId="rake"><RakeGroup description="" fullCmd="" taksId="sanitation"><RakeTask description="Check both line length and method length" fullCmd="sanitation:all" taksId="all" /><RakeTask description="Check line lengths &amp; whitespace with Cane" fullCmd="sanitation:lines" taksId="lines" /><RakeTask description="Check method length with Reek" fullCmd="sanitation:methods" taksId="methods" /></RakeGroup><RakeTask description="Run tests" fullCmd="test" taksId="test" /></RakeGroup></Settings>
