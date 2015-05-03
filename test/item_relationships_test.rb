@@ -14,7 +14,7 @@ class ItemRelationshipsTest < Minitest::Test
     assert_equal [135], @item.invoice_items.map { |invoice_item| invoice_item.id }
   end
 
-  def test_it_returns_items_by_merchant_id
-    assert_equal [1,2,3,4,5,6,7,8,9,10], @item.merchant.map { |merchant_id| merchant_id.id }
+  def test_it_returns_merchant_by_merchant_id
+    assert_equal "Schroeder-Jerde", @item.merchant.name
   end
 end

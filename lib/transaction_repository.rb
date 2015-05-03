@@ -24,8 +24,8 @@ class TransactionRepository
     @transactions.find_all { |transaction| transaction.id == id }
   end
 
-  def find_by_invoice_id(invoice_id)
-    @transactions.find { |transaction| transaction.invoice_id == invoice_id }
+  def find_by_invoice_id(id)
+    @transactions.find { |transaction| transaction.invoice_id == id }
   end
 
   def find_all_by_invoice_id(invoice_id)
@@ -76,8 +76,8 @@ class TransactionRepository
     @transactions.find_all { |transaction| transaction.updated_at == updated_at }
   end
 
-  def find_invoice(id)
-    @engine.find_invoice_by_invoice_id(id)
+  def find_invoice(invoice_id)
+    @engine.find_invoice_by_invoice_id(invoice_id)
   end
 
   def find_by_invoice_id(id)

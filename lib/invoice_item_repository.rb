@@ -81,6 +81,11 @@ class InvoiceItemRepository
     @engine.find_item_by_item_id(item_id)
   end
 
+  def find_item_id_by_invoice(id)
+    item_id = find_by_invoice_id(id).item_id
+    @engine.find_item_by_item_id(item_id)
+  end
+
   def inspect
     "#<#{self.class} #{@invoice_items.size} rows>"
   end

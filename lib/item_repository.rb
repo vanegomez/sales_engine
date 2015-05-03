@@ -77,16 +77,16 @@ class ItemRepository
     @items.find_all { |item| item.id == id}
   end
 
-  def find_item_by_item_id(item_id)
-    @items.find { |item| item.id == item_id}
-  end
-
   def find_invoice_items_by_item_id(id)
     @engine.find_invoice_items_by_item_id(id)
   end
 
-  def find_items_by_merchant_id(id)
-    @engine.find_items_by_merchant_id(id)
+  def find_merchant_by_merchant_id(merchant_id)
+    @engine.find_merchant_by_merchant_id(merchant_id)
+  end
+
+  def find_all_by_merchant_id(merchant_id)
+    @items.find_all { |item| item.merchant_id == merchant_id }
   end
 
   def inspect

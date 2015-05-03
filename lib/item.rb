@@ -24,6 +24,6 @@ class Item
   end
 
  def merchant
-   @merchant ||= @repository.find_items_by_merchant_id(id)
+   @merchant ||= @repository.find_merchant_by_merchant_id(merchant_id)
  end
 end

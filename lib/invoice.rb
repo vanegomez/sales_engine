@@ -18,7 +18,7 @@ class Invoice
   end
 
   def transactions
-    @transactions ||= @repository.find_transaction_by_invoice(id)
+    @transactions ||= @repository.find_all_transactions_by_invoice(id)
   end
 
   def invoice_items
@@ -26,11 +26,11 @@ class Invoice
   end
 
   def items
-    @items ||= @repository.find_items(id)
+     @items ||= invoice_items.map { |invoice_item| invoice_item.item }
   end
 
-  def customers
-    @customers ||= @repository.find_customers(id)
+  def customer
+    @customer ||= @repository.find_customer(customer_id)
   end
 
   def merchants

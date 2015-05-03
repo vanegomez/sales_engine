@@ -24,11 +24,16 @@ class InvoiceRelationshipstest < Minitest::Test
     assert_equal @invoice.items[0].name, "Item Autem Minima"
   end
 
-  def test_it_can_find_customers
-    assert_equal @invoice.customers[0].first_name, "Cecelia"
+  def test_it_can_find_customer
+    assert_equal @invoice.customer.first_name, "Cecelia"
   end
 
   def test_it_can_find_merchants
     assert_equal @invoice.merchants[0].name, "Klein, Rempel and Jones"
   end
 end
+
+# Failure/Error: expect(invoice.customer.first_name).to eq "Eric"
+#      NoMethodError:
+#        undefined method `first_name' for nil:NilClass
+#      # ./spec/invoice_spec.rb:56:in `block (4 levels) in <top (required)>'

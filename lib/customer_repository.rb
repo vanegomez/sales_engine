@@ -61,10 +61,6 @@ class CustomerRepository
     @customers.find_all {|customer| customer.updated_at == updated_at}
   end
 
-  def find_customers(id)
-    @customers.find_all { |customer| customer.id == id }
-  end
-
   def inspect
     "#<#{self.class} #{@customer.size} rows>"
   end

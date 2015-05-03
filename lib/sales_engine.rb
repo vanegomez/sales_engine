@@ -48,48 +48,48 @@ class SalesEngine
     @invoice_repository.find_by_invoice_id(id)
   end
 
-  def find_transactions_by_invoice(id)
-    @transaction_repository.find_by_invoice_id(id)
+  def find_all_transactions_by_invoice(id)
+    @transaction_repository.find_all_by_invoice_id(id)
   end
 
   def find_invoice_item_by_invoice(id)
     @invoice_item_repository.find_all_by_invoice_id(id)
   end
 
-  def find_items_by_merchant_id(id)
-    @item_repository.find_all_by_merchant_id(id)
+  def find_merchant_by_merchant_id(merchant_id)
+    @merchant_repository.find_by_id(merchant_id)
   end
 
   def find_items(id)
-    @item_repository.find_items(id)
+    @invoice_item_repository.find_item_id_by_invoice(id)
   end
 
-  def find_customers(id)
-    @customer_repository.find_customers(id)
+  def find_customer(id)
+    @customer_repository.find_by_id(id)
   end
 
   def find_merchants(id)
     @merchant_repository.find_all_by_id(id)
   end
 
-  def find_invoices_by_merchant_id(id)
+  def find_all_invoices_by_merchant_id(id)
     @invoice_repository.find_all_by_merchant_id(id)
   end
 
-  def find_invoice_by_invoice_id(id)
-    @invoice_repository.find_invoice_by_invoice_id(id)
+  def find_invoice_by_invoice_id(invoice_id)
+    @invoice_repository.find_by_invoice_id(invoice_id)
   end
 
   def find_item_by_item_id(id)
-    @item_repository.find_item_by_item_id(id)
+    @item_repository.find_by_id(id)
   end
 
   def find_invoice_items_by_item_id(id)
     @invoice_item_repository.find_all_by_item_id(id)
   end
 
-  def def_find_items_by_merchant_id(id)
-    @merchant_repository.find_by_id(id)
+  def find_all_items_by_merchant_id(merchant_id)
+    @item_repository.find_all_by_merchant_id(merchant_id)
   end
 
   if __FILE__ == $0
