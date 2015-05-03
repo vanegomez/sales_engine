@@ -57,6 +57,16 @@ class MerchantRepository
     @engine.find_all_invoices_by_merchant_id(id)
   end
 
+  def revenue(date)
+    @merchants.map { |merchant| merchant.revenue(date) }.reduce(0, :+)
+  end
+
+  def most_revenue(x)
+    merchants.sort_by do |merchant|
+      merchant.revenue
+    end.reverse.first(x)
+  end
+
   def inspect
     "#<#{self.class} #{@merchants.size} rows>"
   end

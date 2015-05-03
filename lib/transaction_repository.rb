@@ -85,7 +85,7 @@ class TransactionRepository
   end
 
   def successful?
-      result == "successful"
+    result == "successful"
   end
 
   def inspect
