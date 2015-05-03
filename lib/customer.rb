@@ -25,18 +25,18 @@ class Customer
     invoices.map { |invoice| invoice.transactions }.flatten
   end
 
-  # def favorite_merchant
-  #   # require 'pry'; binding.pry
-  #   successful_transactions = transactions.find_all { |transaction|
-  #     transaction.result == "success"}
-  #   successful_invoices = successful_transactions.map do |transaction|
-  #     transaction.invoice
-  #       end
-  #   successful_merchants = successful_invoices.map do |invoice|
-  #     invoice.merchant
-  #       end
-  #   successful_merchants.max_by do |merchant|
-  #     successful_merchants.count(merchant)
-  #   end
-  # end
+  def favorite_merchant
+    # require 'pry'; binding.pry
+    successful_transactions = transactions.find_all { |transaction|
+      transaction.result == "success"}
+    successful_invoices = successful_transactions.map do |transaction|
+      transaction.invoice
+        end
+    successful_merchants = successful_invoices.map do |invoice|
+      invoice.merchant
+        end
+    successful_merchants.max_by do |merchant|
+      successful_merchants.count(merchant)
+    end
+  end
 end

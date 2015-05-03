@@ -34,6 +34,10 @@ class Invoice
   end
 
   def merchant
-    @merchant ||= @repository.find_merchant(id)
+    @merchant ||= @repository.find_merchant(merchant_id)
+  end
+
+  def successful?
+    @transactions.result == "success"
   end
 end

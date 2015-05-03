@@ -21,4 +21,43 @@ class Merchant
   def invoices
     @invoices ||= @repository.find_all_invoices_by_merchant_id(id)
   end
+
+  def transactions
+    @transactions ||= invoices.map do |invoice| invoice.transactions
+    end.flatten
+  end
+
+  def successful_transactions
+    transactions.select do |transaction|
+      transaction.result == "success"
+    end
+  end
+
+  def successful_invoices
+    successful_transactions.map do |transaction|
+      transaction.invoice
+    end
+  end
+
+  def successful_customers
+    successful_customers = successful_invoices.map do |invoice|
+      invoice.customer
+    end
+  end
+
+  def favorite_customer
+    successful_customers.max_by do |customer|
+      successful_customers.count(customer)
+    end
+  end
+
+  def pending_invoices
+    invoices - successful_invoices
+  end
+
+  def customers_with_pending_invoices
+    pending_invoices.flat_map do |pending_invoice|
+      pending_invoice.customer
+    end
+  end
 end
