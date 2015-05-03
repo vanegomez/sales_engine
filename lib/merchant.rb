@@ -15,10 +15,10 @@ class Merchant
   end
 
   def items
-    @items ||= @repository.find_items_by_merchant_id(id)
+    @items ||= @repository.find_all_items_by_merchant_id(id)
   end
 
   def invoices
-    @invoices ||= @repository.find_invoices_by_merchant_id(id)
+    @invoices ||= @repository.find_all_invoices_by_merchant_id(id)
   end
 end

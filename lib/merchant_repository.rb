@@ -49,12 +49,12 @@ class MerchantRepository
     @merchants.find_all {|merchant| merchant.updated_at == updated_at}
   end
 
-  def find_items_by_merchant_id(id)
-    @engine.find_items_by_merchant_id(id)
+  def find_all_items_by_merchant_id(id)
+    @engine.find_all_items_by_merchant_id(id)
   end
 
-  def find_invoices_by_merchant_id(id)
-    @engine.find_invoices_by_merchant_id(id)
+  def find_all_invoices_by_merchant_id(id)
+    @engine.find_all_invoices_by_merchant_id(id)
   end
 
   def inspect

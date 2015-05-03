@@ -65,12 +65,12 @@ class InvoiceRepository
     @invoices.find_all { |invoice| invoice.updated_at == updated_at }
   end
 
-  def find_by_invoice_id(id)
-    @invoices.find { |invoice| invoice.id == id }
+  def find_by_invoice_id(invoice_id)
+    @invoices.find { |invoice| invoice.id == invoice_id }
   end
 
-  def find_transaction_by_invoice(id)
-   @engine.find_transactions_by_invoice(id)
+  def find_all_transactions_by_invoice(id)
+   @engine.find_all_transactions_by_invoice(id)
   end
 
   def find_invoice_item_by_invoice(id)
@@ -78,20 +78,20 @@ class InvoiceRepository
   end
 
   def find_items(id)
-    @engine.find_items(id)
+    @engine.find_items_by_items_id(id)
   end
 
-  def find_customers(id)
-    @engine.find_customers(id)
+  def find_customer(id)
+    @engine.find_customer(id)
   end
 
   def find_merchants(id)
     @engine.find_merchants(id)
   end
 
-  def find_invoice_by_invoice_id(invoice_id)
-    @invoices.find { |invoice| invoice.id == invoice_id}
-  end
+  # def find_invoice_by_invoice_id(invoice_id)
+  #   @invoices.find { |invoice| invoice.id == invoice_id}
+  # end
 
   def inspect
     "#<#{self.class} #{@invoices.size} rows>"
