@@ -21,7 +21,7 @@ class InvoiceRepositoryTest < Minitest::Test
 
   def test_it_loads_all
     assert_equal Array, invoice_repository.all.class
-    assert_equal 10, invoice_repository.all.count
+    assert_equal 11, invoice_repository.all.count
     assert_equal Invoice, invoice_repository.all[0].class
   end
 

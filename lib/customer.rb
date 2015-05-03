@@ -20,4 +20,14 @@ class Customer
   def invoices
     @invoices ||= @repository.find_invoices(id)
   end
+
+  def transactions
+    invoices.map { |invoice| invoice.transactions }
+  end
+
+  def favorite_merchant
+    successful_transactions = transactions.find_all {|transaction| transaction.result == "success"}
+    merchants_transations = successful_transactions.map { |success| success.invoice.merchants }[0]
+    # merchants_transactions.max_by { |merchant| merchant.invoices.transations.map }
+  end
 end
