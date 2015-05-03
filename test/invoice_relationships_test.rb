@@ -12,8 +12,8 @@ class InvoiceRelationshipstest < Minitest::Test
   end
 
   def test_it_can_find_transaction
-    assert_equal 2, @invoice.transactions.invoice_id
-    refute_equal 1, @invoice.transactions.invoice_id
+    assert_equal 1, @invoice.transactions.length
+    refute_equal 2, @invoice.transactions.length
   end
 
   def test_it_finds_invoice_items_by_id
@@ -21,19 +21,17 @@ class InvoiceRelationshipstest < Minitest::Test
   end
 
   def test_it_can_find_items
-    assert_equal @invoice.items[0].name, "Item Autem Minima"
+    @engine = SalesEngine.new("../sales_engine/data")
+    @engine.startup
+    @invoice_real = @engine.invoice_repository.all[1]
+    assert_equal "Item Illum Velit", @invoice_real.items[0].name
   end
 
   def test_it_can_find_customer
-    assert_equal @invoice.customer.first_name, "Cecelia"
+    assert_equal "Joey", @invoice.customer.first_name
   end
 
   def test_it_can_find_merchants
-    assert_equal @invoice.merchants[0].name, "Klein, Rempel and Jones"
+    assert_equal "Klein, Rempel and Jones", @invoice.merchants[0].name
   end
 end
-
-# Failure/Error: expect(invoice.customer.first_name).to eq "Eric"
-#      NoMethodError:
-#        undefined method `first_name' for nil:NilClass
-#      # ./spec/invoice_spec.rb:56:in `block (4 levels) in <top (required)>'
