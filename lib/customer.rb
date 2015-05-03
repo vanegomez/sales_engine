@@ -18,16 +18,25 @@ class Customer
   end
 
   def invoices
-    @invoices ||= @repository.find_invoices(id)
+    @repository.find_invoices(id)
   end
 
   def transactions
-    invoices.map { |invoice| invoice.transactions }
+    invoices.map { |invoice| invoice.transactions }.flatten
   end
 
-  def favorite_merchant
-    successful_transactions = transactions.find_all {|transaction| transaction.result == "success"}
-    merchants_transations = successful_transactions.map { |success| success.invoice.merchants }[0]
-    # merchants_transactions.max_by { |merchant| merchant.invoices.transations.map }
-  end
+  # def favorite_merchant
+  #   # require 'pry'; binding.pry
+  #   successful_transactions = transactions.find_all { |transaction|
+  #     transaction.result == "success"}
+  #   successful_invoices = successful_transactions.map do |transaction|
+  #     transaction.invoice
+  #       end
+  #   successful_merchants = successful_invoices.map do |invoice|
+  #     invoice.merchant
+  #       end
+  #   successful_merchants.max_by do |merchant|
+  #     successful_merchants.count(merchant)
+  #   end
+  # end
 end

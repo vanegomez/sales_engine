@@ -30,7 +30,7 @@ class InvoiceRepository
   end
 
   def find_all_by_customer_id(id)
-    @invoices.find_all { |invoice| invoice.customer_id.to_i == id }
+    @invoices.find_all { |invoice| invoice.customer_id == id }
   end
 
   def find_by_merchant_id(merchant_id)
@@ -85,8 +85,8 @@ class InvoiceRepository
     @engine.find_customer(id)
   end
 
-  def find_merchants(id)
-    @engine.find_merchants(id)
+  def find_merchant(id)
+    @engine.find_merchant(id)
   end
 
   # def find_invoice_by_invoice_id(invoice_id)

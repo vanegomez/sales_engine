@@ -84,6 +84,10 @@ class TransactionRepository
     @transactions.find { |transaction| transaction.invoice_id == id}
   end
 
+  def successful?
+      result == "successful"
+  end
+
   def inspect
     "#<#{self.class} #{@transactions.size} rows>"
   end
