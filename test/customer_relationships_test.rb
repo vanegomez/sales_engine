@@ -12,6 +12,10 @@ class CustomerRelationshipstest < Minitest::Test
   end
 
   def test_it_can_find_invoices
-    assert_equal 1, @customer.invoices.first.customer_id.to_i
+    assert_equal 1, @customer.invoices.first.customer_id
+  end
+
+  def test_it_can_find_transactions
+    assert_equal 7, @customer.transactions.length
   end
 end

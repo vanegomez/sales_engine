@@ -32,6 +32,6 @@ class InvoiceRelationshipstest < Minitest::Test
   end
 
   def test_it_can_find_merchants
-    assert_equal "Klein, Rempel and Jones", @invoice.merchants[0].name
+    assert_equal "Klein, Rempel and Jones", @invoice.merchant.name
   end
 end
