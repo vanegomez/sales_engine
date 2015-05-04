@@ -14,7 +14,7 @@ class MerchantRepositoryTest < Minitest::Test
 
   def test_it_finds_all_merchants
     assert_equal Array, merchant_repository.all.class
-    assert_equal 11, merchant_repository.all.length.to_i
+    assert_equal 12, merchant_repository.all.length.to_i
   end
 
   def test_it_returns_random_merchant
@@ -46,7 +46,7 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_finds_all_by_created_at
-    assert_equal 9, merchant_repository.find_all_by_created_at("2012-03-27 14:53:59 UTC").length
+    assert_equal 10, merchant_repository.find_all_by_created_at("2012-03-27 14:53:59 UTC").length
   end
 
   def test_it_finds_by_updated_at
@@ -54,6 +54,6 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_finds_all_by_updated_at
-    assert_equal 8, merchant_repository.find_all_by_updated_at("2012-03-27 14:53:59 UTC").length
+    assert_equal 9, merchant_repository.find_all_by_updated_at("2012-03-27 14:53:59 UTC").length
   end
 end

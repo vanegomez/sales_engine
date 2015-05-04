@@ -17,7 +17,7 @@ class MerchantRelationshipsTest < Minitest::Test
 
   def test_it_returns_invoices_by_merchant_id
     @merchant = @engine.merchant_repository.all[-1]
-    assert_equal [1], @merchant.invoices.map { |invoice| invoice.id }
+    assert_equal [2], @merchant.invoices.map { |invoice| invoice.id }
   end
 
   def test_it_returns_transactions
