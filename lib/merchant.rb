@@ -40,7 +40,7 @@ class Merchant
   end
 
   def successful_customers
-    successful_customers = successful_invoices.map do |invoice|
+    successful_invoices.map do |invoice|
       invoice.customer
     end
   end
@@ -59,5 +59,10 @@ class Merchant
     pending_invoices.flat_map do |pending_invoice|
       pending_invoice.customer
     end
+  end
+
+  def revenue
+    invoice_items = successful_invoices.flat_map { |successful_invoice| successful_invoice.invoice_items }
+    invoice_items.flat_map { |invoice_item| invoice_item.revenue }.reduce(:+)
   end
 end

@@ -9,6 +9,10 @@ class InvoiceRelationshipstest < Minitest::Test
     @engine = SalesEngine.new("./test/fixtures")
     @engine.startup
     @invoice = @engine.invoice_repository.all[1]
+
+    @data_engine = SalesEngine.new("../sales_engine/data")
+    @data_engine.startup
+    @invoice_real = @data_engine.invoice_repository.all[1]
   end
 
   def test_it_can_find_transaction
@@ -21,9 +25,6 @@ class InvoiceRelationshipstest < Minitest::Test
   end
 
   def test_it_can_find_items
-    @engine = SalesEngine.new("../sales_engine/data")
-    @engine.startup
-    @invoice_real = @engine.invoice_repository.all[1]
     assert_equal "Item Illum Velit", @invoice_real.items[0].name
   end
 
@@ -32,6 +33,7 @@ class InvoiceRelationshipstest < Minitest::Test
   end
 
   def test_it_can_find_merchants
-    assert_equal "Klein, Rempel and Jones", @invoice.merchant.name
+    # require 'pry'; binding.pry
+    assert_equal "Willms and Sons", @invoice.merchant.name
   end
 end
