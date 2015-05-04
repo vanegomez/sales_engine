@@ -19,4 +19,25 @@ class MerchantRelationshipsTest < Minitest::Test
     @merchant = @engine.merchant_repository.all[-1]
     assert_equal [1], @merchant.invoices.map { |invoice| invoice.id }
   end
+
+  def test_it_returns_transactions
+    skip
+  end
+
+  def test_it_returns_favorite_customer
+    skip
+  end
+
+  def test_it_returns_customers_with_pending_invoices
+    skip
+  end
+
+  def test_it_returns_total_revenue
+    new_engine = SalesEngine.new("../sales_engine/data")
+    new_engine.startup
+    new_merchant = new_engine.merchant_repository.find_by_id(1)
+    assert_equal 528774, new_merchant.revenue.to_i
+  end
+
 end
+

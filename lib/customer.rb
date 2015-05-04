@@ -26,7 +26,6 @@ class Customer
   end
 
   def favorite_merchant
-    # require 'pry'; binding.pry
     successful_transactions = transactions.find_all { |transaction|
       transaction.result == "success"}
     successful_invoices = successful_transactions.map do |transaction|
