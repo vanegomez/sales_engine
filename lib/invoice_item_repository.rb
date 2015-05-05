@@ -86,12 +86,6 @@ class InvoiceItemRepository
     @engine.find_item_by_item_id(item_id)
   end
 
-  def calculate_total_quantity(invoice_items)
-    invoice_items.reduce(0) do |sum, invoice_item|
-      sum + invoice_item.quantity
-    end
-  end
-
   def create_invoice_items(invoice_id, item, quantity)
     data =  {
             id: "#{invoice_items.last.id + 1}",
