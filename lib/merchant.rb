@@ -65,4 +65,9 @@ class Merchant
     invoice_items = successful_invoices.flat_map { |successful_invoice| successful_invoice.invoice_items }
     invoice_items.flat_map { |invoice_item| invoice_item.revenue }.reduce(:+)
   end
+
+  def items_sold
+    successful_invoices.flat_map {|invoice| invoice.invoice_items}.
+    map {|invoice_item| invoice_item.item}.length
+  end
 end

@@ -52,7 +52,7 @@ class SalesEngine
     @transaction_repository.find_all_by_invoice_id(id)
   end
 
-  def find_invoice_item_by_invoice(id)
+  def find_invoice_items_by_invoice(id)
     @invoice_item_repository.find_all_by_invoice_id(id)
   end
 
@@ -90,6 +90,14 @@ class SalesEngine
 
   def find_all_items_by_merchant_id(merchant_id)
     @item_repository.find_all_by_merchant_id(merchant_id)
+  end
+
+  def successful_transactions
+    transaction_repository.successful_transactions?
+  end
+
+  def successful_invoices
+    @invoice_repository.successful_invoices
   end
 
   if __FILE__ == $0

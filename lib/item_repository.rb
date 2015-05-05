@@ -89,6 +89,12 @@ class ItemRepository
     @items.find_all { |item| item.merchant_id == merchant_id }
   end
 
+  def most_items(x)
+    items.sort_by do |item|
+      item.quantity_sold.nil? ? 0 : item.quantity_sold
+    end.reverse.first(x)
+  end
+
   def inspect
     "#<#{self.class} #{@items.size} rows>"
   end

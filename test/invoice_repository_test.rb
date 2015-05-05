@@ -73,4 +73,8 @@ class InvoiceRepositoryTest < Minitest::Test
     assert_equal Array, result.class
     assert_equal 8, result.length
   end
+
+  def test_it_can_check_successful_invoices
+    assert_equal [], @invoice_repository.successful_invoices
+  end
 end

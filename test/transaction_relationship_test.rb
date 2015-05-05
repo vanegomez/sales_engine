@@ -8,9 +8,9 @@ class TransactionRelationshipstest < Minitest::Test
               :invoice_repository
 
   def setup
-    @engine = SalesEngine.new("./test/fixtures")
+    @engine ||= SalesEngine.new("./test/fixtures")
     @engine.startup
-    @transaction = @engine.transaction_repository.all.first
+    @transaction ||= @engine.transaction_repository.all.first
   end
 
   def test_it_can_find_invoices

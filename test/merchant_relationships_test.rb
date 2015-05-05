@@ -6,9 +6,14 @@ require_relative "../lib/sales_engine"
 class MerchantRelationshipsTest < Minitest::Test
 
   def setup
-    @engine = SalesEngine.new("./test/fixtures")
+    @engine ||= SalesEngine.new("./test/fixtures")
     @engine.startup
-    @merchant = @engine.merchant_repository.all.first
+    @merchant_repo ||= @engine.merchant_repository
+    @merchant = @merchant_repo.all.first
+
+    @new_engine ||= SalesEngine.new("../sales_engine/data")
+    @new_engine.startup
+    @new_merchant_repo ||= @new_engine.merchant_repository
   end
 
   def test_it_returns_items_by_merchant_id
@@ -21,23 +26,26 @@ class MerchantRelationshipsTest < Minitest::Test
   end
 
   def test_it_returns_transactions
-    skip
+    new_merchant = @new_merchant_repo.find_by_id(1)
+    assert_equal 30, new_merchant.transactions.first.id
   end
 
   def test_it_returns_favorite_customer
-    skip
+    fave_customer = @new_merchant_repo.find_by_id(1).favorite_customer
+    assert_equal 7, fave_customer.id
   end
 
   def test_it_returns_customers_with_pending_invoices
-    skip
+      assert_equal "Parker", @merchant.customers_with_pending_invoices.first.first_name
   end
 
-  def test_it_returns_total_revenue
-    new_engine = SalesEngine.new("../sales_engine/data")
-    new_engine.startup
-    new_merchant = new_engine.merchant_repository.find_by_id(1)
-    assert_equal 528774, new_merchant.revenue.to_i
+  def test_it_returns_total_revenue_for_a_merchant
+    merch = @new_merchant_repo.find_by_id(1)
+    assert_equal 528774, merch.revenue.to_i
+  end
+
+  def test_it_returns_top_revenue_for_all_merchant
+    assert_equal "Dicki-Bednar", @new_merchant_repo.most_revenue(1).first.name
   end
 
 end
-

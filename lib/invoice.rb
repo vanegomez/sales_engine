@@ -22,7 +22,7 @@ class Invoice
   end
 
   def invoice_items
-    @invoice_items ||= @repository.find_invoice_item_by_invoice(id)
+    @invoice_items ||= @repository.find_invoice_items_by_invoice(id)
   end
 
   def items
@@ -35,9 +35,5 @@ class Invoice
 
   def merchant
     @merchant ||= @repository.find_merchant(merchant_id)
-  end
-
-  def successful?
-    @transactions.result == "success"
   end
 end

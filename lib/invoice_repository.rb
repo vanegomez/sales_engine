@@ -73,8 +73,8 @@ class InvoiceRepository
    @engine.find_all_transactions_by_invoice(id)
   end
 
-  def find_invoice_item_by_invoice(id)
-    @engine.find_invoice_item_by_invoice(id)
+  def find_invoice_items_by_invoice(id)
+    @engine.find_invoice_items_by_invoice(id)
   end
 
   def find_items(id)
@@ -89,9 +89,13 @@ class InvoiceRepository
     @engine.find_merchant(id)
   end
 
-  # def find_invoice_by_invoice_id(invoice_id)
-  #   @invoices.find { |invoice| invoice.id == invoice_id}
-  # end
+  def shipped_invoices
+    @invoices.find_all { |invoice| invoice.status == "shipped" }
+  end
+
+  def successful_invoices
+    @engine.successful_transactions.flat_map { |transaction| find_all_by_id(transaction.invoice_id)}
+  end
 
   def inspect
     "#<#{self.class} #{@invoices.size} rows>"
