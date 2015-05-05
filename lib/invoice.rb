@@ -36,4 +36,8 @@ class Invoice
   def merchant
     @merchant ||= @repository.find_merchant(merchant_id)
   end
+
+  def charge(card)
+    repository.create_transaction(card, id)
+  end
 end
