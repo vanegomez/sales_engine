@@ -88,6 +88,21 @@ class TransactionRepository
     @transactions.find_all {|transaction| transaction.result == "successful"}
   end
 
+  def create_transaction(card, id)
+    data = {
+           id: "#{transactions.last.id + 1}",
+           invoice_id: id,
+           credit_card_number: card[:credit_card_number],
+           credit_card_expiration_date: card[:credit_card_expiration_date],
+           result: card[:result],
+           created_at: "#{Date.new}",
+           updated_at: "#{Date.new}"
+          }
+
+     transaction = Transaction.new(data, self)
+     @transactions << transaction
+   end
+
   def inspect
     "#<#{self.class} #{@transactions.size} rows>"
   end

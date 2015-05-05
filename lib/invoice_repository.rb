@@ -100,4 +100,32 @@ class InvoiceRepository
   def inspect
     "#<#{self.class} #{@invoices.size} rows>"
   end
+
+  def create(attributes)
+    data = {
+            id:          "#{invoices.last.id + 1}",
+            customer_id: attributes[:customer].id,
+            merchant_id: attributes[:merchant].id,
+            status:      attributes[:status],
+            created_at:  "#{Date.new}",
+            updated_at:  "#{Date.new}",
+            }
+
+    new_invoice = Invoice.new(data, self)
+    invoices << new_invoice
+
+    invoice_id = data[:id]
+    unique_items = attributes[:items].uniq
+    quantities = attributes[:items].group_by { |item| item }
+    unique_items.each do |item|
+      quantity = quantities[item].count
+      @engine.invoice_item_repository
+        .create_invoice_items(invoice_id, item, quantity)
+      end
+    new_invoice
+  end
+
+ def create_transaction(card, id)
+    @engine.transaction_repository.create_transaction(card, id)
+  end
 end
