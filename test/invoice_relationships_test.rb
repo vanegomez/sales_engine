@@ -6,13 +6,13 @@ require_relative "../lib/sales_engine"
 class InvoiceRelationshipstest < Minitest::Test
 
   def setup
-    @engine = SalesEngine.new("./test/fixtures")
+    @engine ||= SalesEngine.new("./test/fixtures")
     @engine.startup
-    @invoice = @engine.invoice_repository.all[1]
+    @invoice ||= @engine.invoice_repository.all[1]
 
-    @data_engine = SalesEngine.new("../sales_engine/data")
+    @data_engine ||= SalesEngine.new("../sales_engine/data")
     @data_engine.startup
-    @invoice_real = @data_engine.invoice_repository.all[1]
+    @invoice_real ||= @data_engine.invoice_repository.all[1]
   end
 
   def test_it_can_find_transaction

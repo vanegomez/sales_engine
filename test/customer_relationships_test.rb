@@ -6,9 +6,9 @@ require_relative "../lib/sales_engine"
 class CustomerRelationshipstest < Minitest::Test
 
   def setup
-    @engine = SalesEngine.new("./test/fixtures")
+    @engine ||= SalesEngine.new("./test/fixtures")
     @engine.startup
-    @customer = @engine.customer_repository.all.first
+    @customer ||= @engine.customer_repository.all.first
   end
 
   def test_it_can_find_invoices

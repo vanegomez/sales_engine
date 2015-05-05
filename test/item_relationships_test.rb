@@ -5,9 +5,9 @@ require_relative "../lib/sales_engine"
 
 class ItemRelationshipsTest < Minitest::Test
   def setup
-    @engine = SalesEngine.new("./test/fixtures")
+    @engine ||= SalesEngine.new("./test/fixtures")
     @engine.startup
-    @item = @engine.item_repository.all.first
+    @item ||= @engine.item_repository.all.first
   end
 
   def test_it_returns_invoice_items_by_item_id

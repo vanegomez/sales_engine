@@ -42,6 +42,8 @@ class InvoiceItemTest < Minitest::Test
   def test_invoice_item_was_updated_at
     assert_equal "2012-03-27 14:54:09 UTC", @invoice_item.updated_at
   end
+
+  def test_it_has_revenue
+    assert_equal 681, @invoice_item.revenue.to_i
+  end
 end
-
-
