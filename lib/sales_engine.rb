@@ -100,10 +100,6 @@ class SalesEngine
     @invoice_repository.successful_invoices
   end
 
-  def find_total_quantity(invoice_items)
-    invoice_item_repository.calculate_total_quantity(invoice_items)
-  end
-
   if __FILE__ == $0
     engine = SalesEngine.new("../data")
     engine.startup
