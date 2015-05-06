@@ -76,6 +76,6 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_can_check_successful_invoices
-    assert_equal [], @invoice_repository.successful_invoices
+    assert_equal 1, @invoice_repository.successful_invoices.first.id
   end
 end

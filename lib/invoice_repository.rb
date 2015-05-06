@@ -94,7 +94,9 @@ class InvoiceRepository
   end
 
   def successful_invoices
-    @engine.successful_transactions.flat_map { |transaction| find_all_by_id(transaction.invoice_id)}
+    @engine.successful_transactions.flat_map do |transaction|
+      find_all_by_id(transaction.invoice_id)
+    end
   end
 
   def inspect
