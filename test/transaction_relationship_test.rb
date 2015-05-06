@@ -1,5 +1,6 @@
 require "minitest/autorun"
 require "minitest/pride"
+require_relative "./test_helper.rb"
 require_relative "../lib/transaction"
 require_relative "../lib/sales_engine"
 
