@@ -61,15 +61,23 @@ class MerchantRepository
     @merchants.max_by(x) { |merchant| merchant.revenue }
   end
 
+  def revenue(date)
+    @merchants.flat_map {|merchant| merchant.revenue(date)}.reduce(0, :+)
+  end
+
   def successful_invoices
     @engine.successful_invoices
+  end
+
+  def find_invoice_items_by_invoice(id)
+    @engine.find_invoice_items_by_invoice(id)
+  end
+
+  def most_items(x)
+    @merchants.sort_by { |merchant| merchant.items_sold }.reverse.first(x)
   end
 
   def inspect
     "#<#{self.class} #{@merchants.size} rows>"
   end
-
-  def most_items(x)
-    @merchants.sort_by { |merchant| merchant.items_sold }.reverse.first(x)
- end
 end

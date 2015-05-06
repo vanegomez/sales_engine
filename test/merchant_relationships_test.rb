@@ -48,4 +48,8 @@ class MerchantRelationshipsTest < Minitest::Test
     assert_equal "Dicki-Bednar", @new_merchant_repo.most_revenue(1).first.name
   end
 
+  def test_it_can_return_revenue_for_a_merchant_for_a_date
+    assert_equal 4760, @new_merchant_repo.all.first.revenue(Date.parse "Tue, 20 Mar 2012").to_i
+  end
+
 end

@@ -1,8 +1,8 @@
-require 'rake/testtask'
-
-Rake::TestTask.new do |t|
- t.pattern = "test/**/*_test.rb"
-end
+# require 'rake/testtask'
+#
+# Rake::TestTask.new do |t|
+#  t.pattern = "test/**/*_test.rb"
+# end
 
 namespace :sanitation do
   desc "Check line lengths & whitespace with Cane"
