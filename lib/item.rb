@@ -28,7 +28,7 @@ class Item
  end
 
  def best_day
-   max_item = invoice_items.max_by {|invoice_item| invoice_item.quantity}
+   max_item = invoice_items.max_by { |invoice_item| invoice_item.quantity }
    Date.parse(max_item.invoice.created_at)
  end
 

@@ -72,7 +72,7 @@ class Merchant
       invoices_on_date = successful_invoices.find_all {
         |invoice| date == Date.parse(invoice.created_at) }
       invoice_items = invoices_on_date.flat_map { |i_o_d| i_o_d.invoice_items }
-      revenue_by_date = invoice_items.flat_map { |invoice_item| invoice_item.revenue }.
+      invoice_items.flat_map { |invoice_item| invoice_item.revenue }.
       reduce(0, :+)
     end
   end
