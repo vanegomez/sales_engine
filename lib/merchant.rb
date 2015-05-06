@@ -1,4 +1,6 @@
 require_relative "merchant_repository"
+require "date"
+
 class Merchant
   attr_reader :id,
               :name,
@@ -61,9 +63,18 @@ class Merchant
     end
   end
 
-  def revenue
-    invoice_items = successful_invoices.flat_map { |successful_invoice| successful_invoice.invoice_items }
-    invoice_items.flat_map { |invoice_item| invoice_item.revenue }.reduce(:+)
+  def revenue(date = nil)
+    if date == nil
+      invoice_items = successful_invoices.flat_map {
+        |successful_invoice| successful_invoice.invoice_items }
+      invoice_items.flat_map { |invoice_item| invoice_item.revenue }.reduce(:+)
+    else
+      invoices_on_date = successful_invoices.find_all {
+        |invoice| date == Date.parse(invoice.created_at) }
+      invoice_items = invoices_on_date.flat_map { |i_o_d| i_o_d.invoice_items }
+      revenue_by_date = invoice_items.flat_map { |invoice_item| invoice_item.revenue }.
+      reduce(0, :+)
+    end
   end
 
   def items_sold
