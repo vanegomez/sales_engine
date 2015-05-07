@@ -9,11 +9,13 @@ class InvoiceRelationshipstest < Minitest::Test
   def setup
     @engine ||= SalesEngine.new("./test/fixtures")
     @engine.startup
-    @invoice ||= @engine.invoice_repository.all[1]
+    @invoice_repository ||= @engine.invoice_repository
+    @invoice ||= @invoice_repository.all[1]
 
     @data_engine ||= SalesEngine.new("../sales_engine/data")
     @data_engine.startup
-    @invoice_real ||= @data_engine.invoice_repository.all[1]
+    @invoice_repo ||= @data_engine.invoice_repository
+    @invoice_real ||= @invoice_repo.all[1]
   end
 
   def test_it_can_find_transaction
@@ -34,7 +36,48 @@ class InvoiceRelationshipstest < Minitest::Test
   end
 
   def test_it_can_find_merchants
-    # require 'pry'; binding.pry
     assert_equal "Willms and Sons", @invoice.merchant.name
+  end
+
+  def test_it_can_find_by_status
+    assert_equal 1, @invoice_repo.find_by_status("shipped").id
+  end
+
+  def test_it_can_find_all_by_status
+    assert_equal 1, @invoice_repository.find_all_by_status("pending").length
+    assert_equal 29, @invoice_repository.find_all_by_status("pending").first.id
+  end
+
+  def test_it_can_find_by_invoice_id
+    assert_equal 1, @invoice_repo.find_by_invoice_id(1).id
+  end
+
+  def test_it_can_find_all_transactions_by_invoice
+    assert_equal 1, @invoice_repo.find_all_transactions_by_invoice(1).
+    flatten.first.id
+  end
+
+  def test_it_can_find_invoice_items_by_invoice_id
+    assert_equal 1, @invoice_repo.find_invoice_items_by_invoice(1).first.id
+  end
+
+  def test_it_can_find_item
+    assert_equal 1, @invoice_repository.find_item(1).id
+  end
+
+  def test_it_can_find_merchant
+    assert_equal 1, @invoice_repository.find_merchant(1).id
+  end
+
+  def test_it_can_find_customer
+    assert_equal 1, @invoice_repository.find_customer(1).id
+  end
+
+  def test_it_can_find_shipped_invoices
+    assert_equal 1, @invoice_repository.shipped_invoices.first.id
+  end
+
+  def test_it_can_find_successful_invoices
+    assert_equal 1, @invoice_repository.successful_invoices.first.id
   end
 end

@@ -53,4 +53,54 @@ class MerchantRelationshipsTest < Minitest::Test
     assert_equal 4760, @new_merchant_repo.all.first.revenue(Date.parse "Tue, 20 Mar 2012").to_i
   end
 
+  def test_it_can_find_all_items_by_merchant_id
+    assert_equal 1, @new_merchant_repo.find_all_items_by_merchant_id(1).first.id
+  end
+
+  def test_it_can_find_all_invoices_by_merchant_id
+    assert_equal 29, @engine.find_all_invoices_by_merchant_id(1).first.id
+  end
+
+  def test_it_finds_most_revenue
+    assert_equal 14, @new_merchant_repo.most_revenue(2).first.id
+  end
+
+  def test_it_finds_revenue_without_date
+    revenue = @new_merchant_repo.all.flat_map do |merchant|
+    merchant.revenue end.reduce(0,:+)
+    assert_equal 57493574, revenue.to_i
+  end
+
+  def test_it_finds_successful_invoices
+    assert_equal 1, @engine.successful_invoices.first.id
+  end
+
+  def test_it_finds_invoice_items_by_invoice
+    assert_equal 1, @engine.find_invoice_items_by_invoice(1).first.id
+  end
+
+  def test_it_returns_most_items_sold
+    assert_equal 1, @new_merchant_repo.most_items(1).id
+  end
+
+  def test_it_returns_successful_customers
+    assert_equal 2, @merchant_repo.all.successful_customers.id
+  end
+  #
+  # def favorite_customer
+  #   successful_customers.max_by do |customer|
+  #     successful_customers.count(customer)
+  #   end
+  # end
+  #
+  # def customers_with_pending_invoices
+  #   pending_invoices.flat_map do |pending_invoice|
+  #     pending_invoice.customer
+  #   end
+  # end
+  #
+  # def items_sold
+  #   successful_invoices.flat_map {|invoice| invoice.invoice_items}.
+  #   map {|invoice_item| invoice_item.item}.length
+  # end
 end
