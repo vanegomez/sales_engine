@@ -1,5 +1,4 @@
-require "minitest/autorun"
-require "minitest/pride"
+require "date"
 require_relative "./test_helper.rb"
 require_relative "../lib/item"
 require_relative "../lib/sales_engine"
@@ -17,5 +16,18 @@ class ItemRelationshipsTest < Minitest::Test
 
   def test_it_returns_merchant_by_merchant_id
     assert_equal "Schroeder-Jerde", @item.merchant.name
+  end
+
+  def test_it_finds_best_day
+    date = Date.parse("2012-03-25 14:54:09 UTC")
+    assert_equal date, @item.best_day
+  end
+
+  def test_revenue
+    assert_equal 0, @item.revenue
+  end
+
+  def test_quantity_sold
+    assert_equal 0, @item.quantity_sold.to_i
   end
 end

@@ -41,14 +41,6 @@ class InvoiceRepository
     @invoices.find_all { |invoice| invoice.merchant_id == merchant_id }
   end
 
-  def find_by_status(status)
-    @invoices.find { |invoice| invoice.status == status }
-  end
-
-  def find_all_by_status(status)
-    @invoices.find_all { |invoice| invoice.status == status }
-  end
-
   def find_by_created_at(created_at)
     @invoices.find { |invoice| invoice.created_at == created_at }
   end
@@ -65,6 +57,14 @@ class InvoiceRepository
     @invoices.find_all { |invoice| invoice.updated_at == updated_at }
   end
 
+  def find_by_status(status)
+    @invoices.find { |invoice| invoice.status == status }
+  end
+
+  def find_all_by_status(status)
+    @invoices.find_all { |invoice| invoice.status == status }
+  end
+
   def find_by_invoice_id(invoice_id)
     @invoices.find { |invoice| invoice.id == invoice_id }
   end
@@ -77,8 +77,8 @@ class InvoiceRepository
     @engine.find_invoice_items_by_invoice(id)
   end
 
-  def find_items(id)
-    @engine.find_items_by_items_id(id)
+  def find_item(id)
+    @engine.find_item_by_item_id(id)
   end
 
   def find_customer(id)
@@ -97,10 +97,6 @@ class InvoiceRepository
     @engine.successful_transactions.flat_map do |transaction|
       find_all_by_id(transaction.invoice_id)
     end
-  end
-
-  def inspect
-    "#<#{self.class} #{@invoices.size} rows>"
   end
 
   def create(attributes)
@@ -129,5 +125,9 @@ class InvoiceRepository
 
  def create_transaction(card, id)
     @engine.transaction_repository.create_transaction(card, id)
+ end
+
+  def inspect
+    "#<#{self.class} #{@invoices.size} rows>"
   end
 end

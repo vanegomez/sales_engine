@@ -23,16 +23,16 @@ class Item
    @invoice_items ||= @repository.find_invoice_items_by_item_id(id)
   end
 
- def merchant
+  def merchant
    @merchant ||= @repository.find_merchant_by_merchant_id(merchant_id)
- end
+  end
 
- def best_day
+  def best_day
    max_item = invoice_items.max_by { |invoice_item| invoice_item.quantity }
    Date.parse(max_item.invoice.created_at)
- end
+  end
 
- def revenue
+  def revenue
    selected_invoices ||= invoice_items.map { |invoice_item|
      invoice_item.invoice }
 
@@ -57,9 +57,9 @@ class Item
      invoice_item.unit_price * invoice_item.quantity }
 
    item_revenue.flatten.reduce(0, :+)
- end
+  end
 
- def quantity_sold
+  def quantity_sold
    selected_invoices ||= invoice_items.map { |invoice_item|
       invoice_item.nil? ? [] : invoice_item.invoice }
 
@@ -82,5 +82,5 @@ class Item
 
    invoice_items_for_item.flatten.map { |invoice_item|
      invoice_item.quantity }.reduce(:+)
- end
+  end
 end
