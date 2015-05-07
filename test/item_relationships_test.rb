@@ -1,5 +1,5 @@
-require "date"
 require_relative "./test_helper.rb"
+require "date"
 require_relative "../lib/item"
 require_relative "../lib/sales_engine"
 
@@ -29,5 +29,19 @@ class ItemRelationshipsTest < Minitest::Test
 
   def test_quantity_sold
     assert_equal 0, @item.quantity_sold.to_i
+  end
+
+  def test_find_items
+    assert_equal 1, @engine.item_repository.find_items(1).first.id
+  end
+
+  def test_most_items
+    assert_equal 1, @engine.item_repository.most_items(1).length
+    assert_equal 10, @engine.item_repository.most_items(1).first.id
+  end
+
+  def test_most_revenue
+    assert_equal 1, @engine.item_repository.most_revenue(1).length
+    assert_equal 10, @engine.item_repository.most_revenue(1).first.id
   end
 end
