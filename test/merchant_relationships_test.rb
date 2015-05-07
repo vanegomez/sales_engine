@@ -1,5 +1,3 @@
-require "minitest/autorun"
-require "minitest/pride"
 require_relative "./test_helper.rb"
 require_relative "../lib/merchant"
 require_relative "../lib/sales_engine"
@@ -72,35 +70,22 @@ class MerchantRelationshipsTest < Minitest::Test
   end
 
   def test_it_finds_successful_invoices
-    assert_equal 1, @engine.successful_invoices.first.id
+    assert_equal 1, @merchant_repo.successful_invoices.first.id
   end
 
   def test_it_finds_invoice_items_by_invoice
-    assert_equal 1, @engine.find_invoice_items_by_invoice(1).first.id
+    assert_equal 1, @merchant_repo.find_invoice_items_by_invoice(1).first.id
   end
 
   def test_it_returns_most_items_sold
-    assert_equal 1, @new_merchant_repo.most_items(1).id
+    assert_equal 89, @new_merchant_repo.most_items(1).first.id
   end
 
-  def test_it_returns_successful_customers
-    assert_equal 2, @merchant_repo.all.successful_customers.id
+  def test_it_returns_customers_with_pending_invoices
+    assert_equal 7, @merchant.customers_with_pending_invoices.first.id
   end
-  #
-  # def favorite_customer
-  #   successful_customers.max_by do |customer|
-  #     successful_customers.count(customer)
-  #   end
-  # end
-  #
-  # def customers_with_pending_invoices
-  #   pending_invoices.flat_map do |pending_invoice|
-  #     pending_invoice.customer
-  #   end
-  # end
-  #
-  # def items_sold
-  #   successful_invoices.flat_map {|invoice| invoice.invoice_items}.
-  #   map {|invoice_item| invoice_item.item}.length
-  # end
+
+  def test_it_returns_items_sold
+    assert_equal 2, @merchant_repo.all[11].items_sold
+  end
 end

@@ -1,5 +1,3 @@
-require "minitest/autorun"
-require "minitest/pride"
 require_relative "./test_helper.rb"
 require_relative "../lib/transaction_repository.rb"
 require_relative "../lib/sales_engine"
@@ -82,5 +80,14 @@ class TransactionRepositoryTest < Minitest::Test
   def test_it_finds_all_transactions_by_date_updated
     assert_equal Array, transaction_repository.find_all_by_updated_at("2012-03-27 14:54:09 UTC").class
     assert_equal 2, transaction_repository.find_all_by_updated_at("2012-03-27 14:54:09 UTC").length
+  end
+
+  def test_it_finds_transaction_by_date_created
+    assert_equal "2012-03-27 14:54:09 UTC", transaction_repository.find_by_created_at("2012-03-27 14:54:09 UTC").created_at
+  end
+
+  def test_it_finds_all_transactions_by_date_created
+    assert_equal Array, transaction_repository.find_all_by_created_at("2012-03-27 14:54:09 UTC").class
+    assert_equal 2, transaction_repository.find_all_by_created_at("2012-03-27 14:54:09 UTC").length
   end
 end

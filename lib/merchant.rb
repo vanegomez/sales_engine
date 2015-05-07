@@ -36,13 +36,13 @@ class Merchant
   end
 
   def successful_invoices
-    successful_transactions.map do |transaction|
+    successful_transactions.flat_map do |transaction|
       transaction.invoice
     end
   end
 
   def successful_customers
-    successful_invoices.map do |invoice|
+    successful_invoices.flat_map do |invoice|
       invoice.customer
     end
   end
